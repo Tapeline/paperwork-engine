@@ -23,11 +23,12 @@
 {% endblock %}
 
 {% block sidebar_left %}
+<a class="pw-toc-link" href="/{{toc_path}}">Up to {{section_name}}</a>
 {{ render_toc(toc, ".", 0) }}
 {% endblock %}
 
 {% block content %}
-<div class="pw-card">
+<div class="pw-card" style="margin-top: 16px;">
   <h1>{{ section_name }}</h1>
   <h2>Contents</h2>
   {{ render_toc(toc, ".", 0) }}

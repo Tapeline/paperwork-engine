@@ -26,18 +26,16 @@
 {% endblock %}
 
 {% block sidebar_left %}
+<a class="pw-toc-link" href="/">Back to home</a>
 {{ render_toc(collection.contents, ".", 0) }}
 {% endblock %}
 
 {% block content %}
-<div class="pw-card">
+<div class="pw-card" style="margin-top: 16px;">
   <h1>{{ collection.title }}</h1>
   {% if collection.abstract %}
   <p>{{ collection.abstract }}</p>
   {% endif %}
-  <div class="pw-meta">
-    {% for tag in collection.tags %}<a href="#" class="pw-badge">{{ tag }}</a>{% endfor %}
-  </div>
   <h2>Table of Contents</h2>
   {{ render_toc(collection.contents, ".", 0) }}
 </div>

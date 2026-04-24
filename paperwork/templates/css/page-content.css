@@ -316,3 +316,8 @@ body.no-left-sidebar .pw-navbar-menu-btn {
 body.no-right-sidebar .pw-footer {
   margin-right: 0;
 }
+
+.math-svg {
+    vertical-align: middle;
+    max-width: 100%;
+}

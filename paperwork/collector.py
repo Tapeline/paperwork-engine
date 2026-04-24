@@ -68,7 +68,7 @@ class Collector:
         conf = frontmatter.load(str(path.absolute()))
         last_modified = os.path.getmtime(path)
         title = path.name.rsplit(".", maxsplit=1)[0]
-        md = path.read_text()
+        md = path.read_text(encoding="utf-8")
         if md.startswith("---\n"):
             md = md.removeprefix("---\n").split("\n---\n", maxsplit=1)[1]
         return Note(
