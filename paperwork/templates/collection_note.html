@@ -1,19 +1,39 @@
-<!DOCTYPE html>
+{# Note within a collection — has left sidebar with collection TOC #}
+{% extends "_base.html" %}
+{% from "_toc_tree.html" import render_toc %}
 
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{{ note.title }}</title>
-</head>
-<body>
-<div>
-  <h1>{{ note.title }}</h1>
-  {% for tag in note.tags %}
-  <small>{{ tag }}</small>
-  {% endfor %}
+{% block title %}{{ note.title }} — {{ collection.title }}{% endblock %}
+{% block brand_text %}{{ collection.title }}{% endblock %}
+
+{% block page_class %}has-hero{% endblock %}
+
+{% block hero %}
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <h1 class="pw-hero-title">{{ note.title }}</h1>
+    <p class="pw-hero-subtitle">{{ collection.title }}</p>
+    <ul class="pw-hero-tags">
+      {% for tag in note.tags %}<li><a href="#" class="pw-hero-tag">{{ tag }}</a></li>{% endfor %}
+    </ul>
+    <div class="pw-hero-search-wrap">
+      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search {{ collection.title }}...">
+    </div>
+  </div>
 </div>
-<main>{{content}}</main>
-</body>
-</html>
+{% endblock %}
 
+{% block sidebar_left %}
+<a class="pw-toc-link" href="/{{toc_path}}">Up to {{section_name}}</a>
+{{ render_toc(collection.contents, ".", 0) }}
+{% endblock %}
+
+{% block content %}
+<div class="pw-card">
+  <div class="pw-meta">
+    {% for tag in note.tags %}<a href="#" class="pw-badge">{{ tag }}</a>{% endfor %}
+  </div>
+  <div class="pw-card-content">
+    {{ content }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{# Search results page #}
+{% extends "_base.html" %}
+
+{% block title %}Search{% endblock %}
+{% block brand_text %}Paperwork{% endblock %}
+
+{% block page_class %}has-hero{% endblock %}
+
+{% block hero %}
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <h1 class="pw-hero-title">Search</h1>
+    <p class="pw-hero-subtitle">Find notes across the knowledge base</p>
+    <div class="pw-hero-search-wrap">
+      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search...">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="pw-card">
+  <h1>Search Results</h1>
+  <div id="pw-search-results">
+    <p>Enter a query above to search.</p>
+  </div>
+</div>
+{% endblock %}

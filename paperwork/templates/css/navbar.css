@@ -1,0 +1,104 @@
+{# Navbar — fixed top bar with branding and inline search #}
+
+/* ===== Navbar ===== */
+.pw-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: {{ navbar_height }};
+  background: {{ primary }};
+  color: {{ text_on_primary }};
+  z-index: 900;
+  -webkit-box-shadow: {{ shadow_2dp }};
+  -moz-box-shadow: {{ shadow_2dp }};
+  box-shadow: {{ shadow_2dp }};
+}
+
+.pw-navbar-inner {
+  height: 100%;
+  padding: 0 16px;
+  /* clearfix */
+  overflow: hidden;
+}
+
+/* --- Hamburger button (mobile sidebar toggle) --- */
+.pw-navbar-menu-btn {
+  float: left;
+  background: none;
+  border: none;
+  color: {{ text_on_primary }};
+  font-size: 24px;
+  line-height: {{ navbar_height }};
+  cursor: pointer;
+  padding: 0 12px 0 0;
+  display: none; /* shown on mobile via responsive.css */
+}
+
+.pw-navbar-menu-btn:hover {
+  opacity: 0.8;
+}
+
+/* --- Right sidebar toggle (mobile) --- */
+.pw-navbar-toc-btn {
+  float: right;
+  background: none;
+  border: none;
+  color: {{ text_on_primary }};
+  font-size: 24px;
+  line-height: {{ navbar_height }};
+  cursor: pointer;
+  padding: 0 0 0 12px;
+  display: none; /* shown on mobile via responsive.css */
+}
+
+.pw-navbar-toc-btn:hover {
+  opacity: 0.8;
+}
+
+/* --- Brand / title --- */
+.pw-navbar-brand {
+  float: left;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: {{ navbar_height }};
+  color: {{ text_on_primary }};
+  text-decoration: none;
+  padding-right: 24px;
+  white-space: nowrap;
+}
+
+.pw-navbar-brand:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* --- Navbar search --- */
+.pw-navbar-search {
+  overflow: hidden; /* takes remaining space */
+  padding: 10px 0;
+}
+
+.pw-navbar-search-input {
+  width: 100%;
+  max-width: 480px;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.15);
+  color: {{ text_on_primary }};
+  font-family: {{ font_body }};
+  font-size: 14px;
+  outline: none;
+}
+
+.pw-navbar-search-input:focus {
+  background: rgba(255,255,255,0.25);
+}
+
+/* Placeholder color — uses vendor prefixes for broad compat */
+.pw-navbar-search-input::-webkit-input-placeholder { color: rgba(255,255,255,0.7); }
+.pw-navbar-search-input:-moz-placeholder           { color: rgba(255,255,255,0.7); }
+.pw-navbar-search-input::-moz-placeholder           { color: rgba(255,255,255,0.7); }
+.pw-navbar-search-input:-ms-input-placeholder       { color: rgba(255,255,255,0.7); }

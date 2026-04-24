@@ -68,11 +68,14 @@ class Collector:
         conf = frontmatter.load(str(path.absolute()))
         last_modified = os.path.getmtime(path)
         title = path.name.rsplit(".", maxsplit=1)[0]
+        md = path.read_text()
+        if md.startswith("---\n"):
+            md = md.removeprefix("---\n").split("\n---\n", maxsplit=1)[1]
         return Note(
             title=title,
             tags=conf.get("tags", []) or [],
             last_modified=datetime.fromtimestamp(last_modified),
-            content_md=path.read_text(),
+            content_md=md,
             loaded_assets_paths=[
                 self.base_dir / asset for asset in note.assets
             ],

@@ -1,0 +1,339 @@
+{# Components — quotes, admonitions, spoilers, code, tables, math #}
+
+/* ============================================================
+   BLOCKQUOTES
+   ============================================================ */
+.pw-card blockquote {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-left: 4px solid {{ divider }};
+  background: #F5F5F5;
+  color: {{ text_secondary }};
+  font-style: italic;
+}
+
+.pw-card blockquote p {
+  margin: 0 0 8px;
+  color: inherit;
+}
+
+.pw-card blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   ADMONITIONS  (Obsidian-style callouts rendered by markdown-it)
+   Markup: <div class="callout" data-callout="note">
+             <div class="callout-title">...</div>
+             <div class="callout-content">...</div>
+           </div>
+   ============================================================ */
+.pw-card .callout {
+  margin: 0 0 16px;
+  border-left: 4px solid {{ adm_info }};
+  border-radius: 2px;
+  background: #E1F5FE;
+  overflow: hidden;
+}
+
+.pw-card .callout-title {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: {{ text_primary }};
+}
+
+.pw-card .callout-content {
+  padding: 0 16px 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pw-card .callout-content p {
+  margin: 0 0 8px;
+}
+
+.pw-card .callout-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Callout type variants --- */
+/* Note / Info (default) */
+.pw-card .callout[data-callout="note"],
+.pw-card .callout[data-callout="info"] {
+  border-left-color: {{ adm_info }};
+  background: #E1F5FE;
+}
+
+/* Tip / Success */
+.pw-card .callout[data-callout="tip"],
+.pw-card .callout[data-callout="success"] {
+  border-left-color: {{ adm_tip }};
+  background: #E8F5E9;
+}
+
+/* Warning / Caution */
+.pw-card .callout[data-callout="warning"],
+.pw-card .callout[data-callout="caution"] {
+  border-left-color: {{ adm_warning }};
+  background: #FFF3E0;
+}
+
+/* Danger / Error / Bug */
+.pw-card .callout[data-callout="danger"],
+.pw-card .callout[data-callout="error"],
+.pw-card .callout[data-callout="bug"] {
+  border-left-color: {{ adm_danger }};
+  background: #FFEBEE;
+}
+
+/* Abstract / Summary / TLDR */
+.pw-card .callout[data-callout="abstract"],
+.pw-card .callout[data-callout="summary"],
+.pw-card .callout[data-callout="tldr"] {
+  border-left-color: {{ adm_note }};
+  background: #E3F2FD;
+}
+
+/* Example */
+.pw-card .callout[data-callout="example"] {
+  border-left-color: #9C27B0;
+  background: #F3E5F5;
+}
+
+/* Quote / Cite */
+.pw-card .callout[data-callout="quote"],
+.pw-card .callout[data-callout="cite"] {
+  border-left-color: {{ text_hint }};
+  background: #F5F5F5;
+}
+
+/* ============================================================
+   SPOILERS / DETAILS
+   Uses <details>/<summary> elements styled as Material card
+   ============================================================ */
+.pw-card details {
+  margin: 0 0 16px;
+  border: 1px solid {{ divider }};
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.pw-card details summary {
+  padding: 12px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #FAFAFA;
+  color: {{ text_primary }};
+  font-size: 14px;
+  list-style: none;
+}
+
+.pw-card details summary::-webkit-details-marker {
+  display: none;
+}
+
+.pw-card details summary:before {
+  content: "\25B6\00a0"; /* right-pointing triangle */
+  font-size: 10px;
+  color: {{ text_secondary }};
+}
+
+.pw-card details[open] summary:before {
+  content: "\25BC\00a0"; /* down-pointing triangle */
+}
+
+.pw-card details[open] summary {
+  border-bottom: 1px solid {{ divider }};
+}
+
+.pw-card details > *:not(summary) {
+  padding: 0 16px;
+}
+
+.pw-card details > p:first-of-type {
+  margin-top: 12px;
+}
+
+/* ============================================================
+   INLINE CODE & CODE BLOCKS
+   ============================================================ */
+
+/* Inline code */
+.pw-card code {
+  font-family: {{ font_mono }};
+  font-size: 0.875em;
+  background: #F5F5F5;
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: #C62828;
+}
+
+/* Fenced code blocks */
+.pw-card pre {
+  margin: 0 0 16px;
+  padding: 16px;
+  background: #263238;
+  color: #ECEFF1;
+  border-radius: 2px;
+  overflow-x: auto;     /* horizontal scroll for wide code */
+  -webkit-overflow-scrolling: touch;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pw-card pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  white-space: pre;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+/* Wrapper allows horizontal scrolling for wide tables */
+.pw-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0 16px;
+}
+
+.pw-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 0 0 16px;
+  min-width: 100%;
+}
+
+.pw-card thead th {
+  background: #F5F5F5;
+  font-weight: 500;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid {{ divider }};
+  color: {{ text_primary }};
+  white-space: nowrap;
+}
+
+.pw-card tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #EEEEEE;
+  color: {{ text_primary }};
+  vertical-align: top;
+}
+
+.pw-card tbody tr:hover {
+  background: #FAFAFA;
+}
+
+/* ============================================================
+   MATH BLOCKS (rendered as SVG/PNG images)
+   ============================================================ */
+
+/* Block-level math — centered with some margin */
+.pw-math-block {
+  text-align: center;
+  margin: 24px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pw-math-block img,
+.pw-math-block svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Inline math */
+.pw-math-inline {
+  display: inline;
+  vertical-align: middle;
+}
+
+.pw-math-inline img,
+.pw-math-inline svg {
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   FOOTNOTES
+   ============================================================ */
+.pw-card .footnotes {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid {{ divider }};
+  font-size: 13px;
+  color: {{ text_secondary }};
+}
+
+.pw-card .footnotes ol {
+  list-style: decimal;
+  margin-left: 20px;
+}
+
+.pw-card .footnotes li {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+/* ============================================================
+   TASK LISTS (checkboxes from markdown)
+   ============================================================ */
+.pw-card .task-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.pw-card .task-list li {
+  padding-left: 24px;
+  position: relative;
+}
+
+.pw-card .task-list input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+/* ============================================================
+   IMAGES (inside content)
+   ============================================================ */
+.pw-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+  margin: 8px 0;
+}
+
+/* ============================================================
+   VIDEO, AUDIO, IFRAME (embedded media)
+   ============================================================ */
+.pw-card video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+  margin: 8px 0;
+  display: block;
+}
+
+.pw-card audio {
+  max-width: 100%;
+  margin: 8px 0;
+  display: block;
+}
+
+.pw-card iframe {
+  max-width: 100%;
+  border: none;
+  border-radius: 2px;
+  margin: 8px 0;
+  display: block;
+}

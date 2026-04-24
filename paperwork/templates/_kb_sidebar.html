@@ -1,0 +1,38 @@
+{#
+  Reusable partial: KB-level sidebar listing all collections and quick notes.
+  Expects `kb` (KnowledgeBase) and `static_root` in the template context.
+#}
+<ul class="pw-toc-tree">
+  {% if kb.collections %}
+  <li class="pw-toc-item is-expanded">
+    <button class="pw-toc-toggle" type="button">
+      <span class="pw-toc-arrow"></span>Collections
+    </button>
+    <div class="pw-toc-children">
+      <ul class="pw-toc-tree">
+        {% for col in kb.collections %}
+        <li class="pw-toc-item">
+          <a class="pw-toc-link" href="{{ static_root }}/{{ col.title | clean_name }}/index.html">{{ col.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </li>
+  {% endif %}
+  {% if kb.single_notes %}
+  <li class="pw-toc-item is-expanded">
+    <button class="pw-toc-toggle" type="button">
+      <span class="pw-toc-arrow"></span>Quick Notes
+    </button>
+    <div class="pw-toc-children">
+      <ul class="pw-toc-tree">
+        {% for note in kb.single_notes %}
+        <li class="pw-toc-item">
+          <a class="pw-toc-link" href="{{ static_root }}/quick_notes/{{ note.title }}.html">{{ note.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </li>
+  {% endif %}
+</ul>

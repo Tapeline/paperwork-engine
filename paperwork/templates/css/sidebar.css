@@ -1,0 +1,149 @@
+{# Sidebars — left (global TOC) and right (page TOC) #}
+
+/* ===== Shared sidebar base ===== */
+.pw-sidebar {
+  position: fixed;
+  top: {{ navbar_height }};
+  bottom: 0;
+  width: {{ sidebar_width }};
+  background: {{ surface }};
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 800;
+  border-right: 1px solid {{ divider }};
+}
+
+.pw-sidebar-inner {
+  padding: 16px 0;
+}
+
+/* --- Left sidebar (global doc TOC) --- */
+.pw-sidebar-left {
+  left: 0;
+  border-right: 1px solid {{ divider }};
+  border-left: none;
+}
+
+/* --- Right sidebar (on-page TOC) --- */
+.pw-sidebar-right {
+  right: 0;
+  border-right: none;
+  border-left: 1px solid {{ divider }};
+}
+
+/* ===== Tree-structured TOC ===== */
+.pw-toc-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pw-toc-tree .pw-toc-tree {
+  padding-left: 16px;
+}
+
+.pw-toc-item {
+  margin: 0;
+  padding: 0;
+}
+
+/* Toggle button for collapsible sections */
+.pw-toc-toggle {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 16px;
+  font-family: {{ font_body }};
+  font-size: 14px;
+  color: {{ text_primary }};
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.pw-toc-toggle:hover {
+  background: {{ primary_light }};
+}
+
+/* Arrow indicator for collapsible items */
+.pw-toc-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent {{ text_secondary }};
+  margin-right: 8px;
+  vertical-align: middle;
+  /* transition not in CSS2, but harmless progressive enhancement */
+}
+
+.pw-toc-item.is-expanded > .pw-toc-toggle .pw-toc-arrow {
+  border-width: 6px 4px 0 4px;
+  border-color: {{ text_secondary }} transparent transparent transparent;
+}
+
+/* Collapsed children are hidden */
+.pw-toc-item .pw-toc-children {
+  display: none;
+}
+
+.pw-toc-item.is-expanded > .pw-toc-children {
+  display: block;
+}
+
+/* Leaf link (no children) */
+.pw-toc-link {
+  display: block;
+  padding: 8px 16px 8px 30px;
+  font-size: 14px;
+  color: {{ text_secondary }};
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.pw-toc-link:hover {
+  background: {{ primary_light }};
+  color: {{ text_primary }};
+  text-decoration: none;
+}
+
+.pw-toc-link.is-active {
+  color: {{ primary }};
+  font-weight: 500;
+  border-right: 3px solid {{ primary }};
+}
+
+/* Right sidebar active link uses left border instead */
+.pw-sidebar-right .pw-toc-link.is-active {
+  border-right: none;
+  border-left: 3px solid {{ primary }};
+}
+
+/* --- Sidebar title/header --- */
+.pw-sidebar-title {
+  padding: 8px 16px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: {{ text_hint }};
+}
+
+/* ===== Overlay for mobile ===== */
+.pw-sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 799;
+}
+
+.pw-sidebar-overlay.is-visible {
+  display: block;
+}

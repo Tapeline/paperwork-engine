@@ -1,0 +1,82 @@
+{#
+  Base layout template.
+  All pages extend this to get navbar, sidebars, and scripts.
+
+  Context variables expected:
+    - static_root   : relative path to root (e.g. "." or ".." or "../..")
+    - per_page_toc  : HTML snippet for right sidebar TOC (optional)
+    - kb            : KnowledgeBase object (optional, for homepage-style sidebar)
+
+  Blocks available to child templates:
+    - title         : page <title>
+    - hero          : optional hero section (colored header)
+    - sidebar_left  : left sidebar content (global doc TOC)
+    - content       : main page content
+    - extra_js      : additional JS at bottom
+#}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}Paperwork{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{{ static_root }}/style.css">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+{# ===== Navbar ===== #}
+<nav class="pw-navbar">
+  <div class="pw-navbar-inner">
+    <button class="pw-navbar-menu-btn" id="pw-navbar-menu-btn" type="button" title="Menu">&#9776;</button>
+    <a class="pw-navbar-brand" href="{% block brand_href %}{{ static_root }}/{% endblock %}">
+      {% block brand_text %}Paperwork{% endblock %}
+    </a>
+    <button class="pw-navbar-toc-btn" id="pw-navbar-toc-btn" type="button" title="Page TOC">&#9776;</button>
+    <div class="pw-navbar-search">
+      <input class="pw-navbar-search-input" id="pw-navbar-search" type="text" placeholder="Search...">
+    </div>
+  </div>
+</nav>
+
+{# ===== Sidebar overlay (mobile) ===== #}
+<div class="pw-sidebar-overlay" id="pw-sidebar-overlay"></div>
+
+{# ===== Left sidebar (global TOC) ===== #}
+<aside class="pw-sidebar pw-sidebar-left" id="pw-sidebar-left">
+  <div class="pw-sidebar-inner">
+    <div class="pw-sidebar-title">Documentation</div>
+    {% block sidebar_left %}{% endblock %}
+  </div>
+</aside>
+
+{# ===== Right sidebar (page TOC) ===== #}
+<aside class="pw-sidebar pw-sidebar-right" id="pw-sidebar-right">
+  <div class="pw-sidebar-inner">
+    <div class="pw-sidebar-title">On this page</div>
+    {{ per_page_toc | default('') | safe }}
+  </div>
+</aside>
+
+{# ===== Hero (optional) ===== #}
+{% block hero %}{% endblock %}
+
+{# ===== Main content ===== #}
+<div class="pw-page {% block page_class %}{% endblock %}">
+  <div class="pw-content-area">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+
+{# ===== Footer ===== #}
+<footer class="pw-footer">
+  {% block footer %}
+  Built with Paperwork
+  {% endblock %}
+</footer>
+
+{# ===== Scripts ===== #}
+<script type="text/javascript" src="{{ static_root }}/script.js"></script>
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

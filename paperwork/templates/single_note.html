@@ -1,19 +1,37 @@
-<!DOCTYPE html>
+{# Single standalone note page #}
+{% extends "_base.html" %}
 
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{{ note.title }}</title>
-</head>
-<body>
-<div>
-  <h1>{{ note.title }}</h1>
-  {% for tag in note.tags %}
-  <small>{{ tag }}</small>
-  {% endfor %}
+{% block title %}{{ note.title }}{% endblock %}
+{% block brand_text %}Paperwork{% endblock %}
+
+{% block page_class %}has-hero{% endblock %}
+
+{% block hero %}
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <h1 class="pw-hero-title">{{ note.title }}</h1>
+    <p class="pw-hero-subtitle">{{ note.last_modified.strftime('%B %d, %Y') }}</p>
+    <ul class="pw-hero-tags">
+      {% for tag in note.tags %}<li><a href="#" class="pw-hero-tag">{{ tag }}</a></li>{% endfor %}
+    </ul>
+    <div class="pw-hero-search-wrap">
+      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search notes...">
+    </div>
+  </div>
 </div>
-<main>{{content}}</main>
-</body>
-</html>
+{% endblock %}
 
+{% block sidebar_left %}
+{% include "_kb_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="pw-card">
+  <div class="pw-meta">
+    {% for tag in note.tags %}<a href="#" class="pw-badge">{{ tag }}</a>{% endfor %}
+  </div>
+  <div class="pw-card-content">
+    {{ content }}
+  </div>
+</div>
+{% endblock %}

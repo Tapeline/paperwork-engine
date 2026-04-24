@@ -42,7 +42,7 @@ def export_command(project: str, build_dir: str) -> None:
         shutil.rmtree(build_dir)
     except FileNotFoundError:
         pass
-    exporter = Exporter(Path(build_dir))
+    exporter = Exporter(Path(project), Path(build_dir))
     exporter.export_kb(kb)
     click.echo(f"Exported to {Path(build_dir).absolute()}")
 

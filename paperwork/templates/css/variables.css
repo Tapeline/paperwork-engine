@@ -1,16 +1,7 @@
 {#
-  Paperwork — Master stylesheet
-  Material Design 1 theme, CSS2 (pragmatic) compliant.
-
-  This file is rendered as a Jinja template. All sub-files are
-  included inline so only one CSS request is needed.
-
-  Variables are defined here (not in a separate include) because
-  Jinja's {% set %} inside {% include %} is scoped to the included
-  template and does not propagate to sibling includes.
-
-  To override colors, pass them via the Jinja render context, e.g.:
-    template.render(primary="#009688", accent="#FFAB00", ...)
+  Material Design 1 - Design Tokens
+  Since CSS2 has no custom properties, we use Jinja variables.
+  These are set here and included before all other CSS files.
 #}
 
 {# --- Primary palette (Indigo 500 default) --- #}
@@ -56,14 +47,3 @@
 {% set adm_warning = "#FF9800" %}
 {% set adm_danger  = "#F44336" %}
 {% set adm_info    = "#00BCD4" %}
-
-/* --- Google Fonts import (Roboto + Roboto Mono) --- */
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Mono:400,500');
-
-{% include "css/reset.css" %}
-{% include "css/navbar.css" %}
-{% include "css/sidebar.css" %}
-{% include "css/hero.css" %}
-{% include "css/page-content.css" %}
-{% include "css/components.css" %}
-{% include "css/responsive.css" %}

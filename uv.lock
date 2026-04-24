@@ -124,6 +124,15 @@ wheels = [
 ]
 
 [[package]]
+name = "latex2mathml"
+version = "3.81.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3b/62/35bb816c5c19d4d0cde5bdfb82ebb996306243d5f94e03f201658c629960/latex2mathml-3.81.0.tar.gz", hash = "sha256:4b959cdc3cac8686bc0e3e5aece8127dfb1b81ca1241bed8e00ef31b82bb4022", size = 77584, upload-time = "2026-04-15T00:55:27.977Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e8/b1/c488b530994c4f68e46efa99a4d6ca6741aaf158e35779fe6c4d8a9a427d/latex2mathml-3.81.0-py3-none-any.whl", hash = "sha256:d317710393fe20579aea39cfe8928fa2ad9b8780896e585326c75e89c1d1d1a4", size = 79185, upload-time = "2026-04-15T00:55:29.301Z" },
+]
+
+[[package]]
 name = "markdown-it-py"
 version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -376,10 +385,13 @@ dependencies = [
     { name = "click" },
     { name = "dature", extra = ["yaml"] },
     { name = "jinja2" },
+    { name = "latex2mathml" },
     { name = "mdformat-obsidian", extra = ["recommended"] },
+    { name = "mdit-py-plugins" },
     { name = "python-frontmatter" },
     { name = "pyyaml" },
     { name = "transliterate" },
+    { name = "ziamath" },
 ]
 
 [package.metadata]
@@ -387,10 +399,13 @@ requires-dist = [
     { name = "click", specifier = ">=8.3.3" },
     { name = "dature", extras = ["yaml"], specifier = ">=0.16.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
+    { name = "latex2mathml", specifier = ">=3.81.0" },
     { name = "mdformat-obsidian", extras = ["recommended"], specifier = ">=0.1.0" },
+    { name = "mdit-py-plugins", specifier = ">=0.5.0" },
     { name = "python-frontmatter", specifier = ">=1.1.0" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "transliterate", specifier = ">=1.10.2" },
+    { name = "ziamath", specifier = ">=0.13" },
 ]
 
 [[package]]
@@ -544,4 +559,26 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/35/a2/8e3becb46433538a38726c948d3399905a4c7cabd0df578ede5dc51f0ec2/wcwidth-0.6.0.tar.gz", hash = "sha256:cdc4e4262d6ef9a1a57e018384cbeb1208d8abbc64176027e2c2455c81313159", size = 159684, upload-time = "2026-02-06T19:19:40.919Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/68/5a/199c59e0a824a3db2b89c5d2dade7ab5f9624dbf6448dc291b46d5ec94d3/wcwidth-0.6.0-py3-none-any.whl", hash = "sha256:1a3a1e510b553315f8e146c54764f4fb6264ffad731b3d78088cdb1478ffbdad", size = 94189, upload-time = "2026-02-06T19:19:39.646Z" },
+]
+
+[[package]]
+name = "ziafont"
+version = "0.11"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f7/7e/a6ced696b3302868183ad56eac4d084bddbe57d757cfddde990e28845cdb/ziafont-0.11.tar.gz", hash = "sha256:b2a9991948b232640215236efdf603f372403b0e000598971a84cae35880d50c", size = 418874, upload-time = "2025-11-27T02:48:51.536Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0c/ea/c5d6e745660b1d95fd257e9fc7f906541ede9bb2edf2ee8fdb4bc151c129/ziafont-0.11-py3-none-any.whl", hash = "sha256:b62132be3da9667a80d048ab5498f107e49761722b69965788c2c747a38e7373", size = 420524, upload-time = "2025-11-27T02:48:46.266Z" },
+]
+
+[[package]]
+name = "ziamath"
+version = "0.13"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "latex2mathml" },
+    { name = "ziafont" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/88/15/d4f6231e568bb49f8340685efe3020077b1f93f2bb4b4e36471367438b91/ziamath-0.13.tar.gz", hash = "sha256:4f56e9d0b6489f01bcf19c05d68e6da84ed6601d2e1262a62d3a9a7e7c33a171", size = 848924, upload-time = "2026-02-06T17:47:15.055Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f8/0d/6e029024b14f3da85408601fd7607eff8d84081d1934b64785373ecb9be5/ziamath-0.13-py3-none-any.whl", hash = "sha256:67a9b9714101fc90c2d6d0328e578f3ac311fb007644f2bbb9314ba2bc1c1459", size = 856433, upload-time = "2026-02-06T17:47:09.471Z" },
 ]

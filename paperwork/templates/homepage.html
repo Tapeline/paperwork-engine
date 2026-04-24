@@ -1,0 +1,61 @@
+{# Knowledge Base homepage #}
+{% extends "_base.html" %}
+
+{% block title %}{{ kb.name }}{% endblock %}
+{% block brand_text %}{{ kb.name }}{% endblock %}
+{% block body_class %}no-right-sidebar{% endblock %}
+
+{% block page_class %}has-hero{% endblock %}
+
+{% block hero %}
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <h1 class="pw-hero-title">{{ kb.name }}</h1>
+    <p class="pw-hero-subtitle">Knowledge Base</p>
+    <div class="pw-hero-search-wrap">
+      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search everything...">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block sidebar_left %}
+{% include "_kb_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+{% if kb.collections %}
+<div class="pw-section-label">Collections</div>
+<div class="pw-card-grid">
+  {% for col in kb.collections %}
+  <div class="pw-grid-item">
+    <a class="pw-grid-card" href="{{ col.title | clean_name }}/index.html">
+      <div class="pw-grid-card-title">{{ col.title }}</div>
+      {% if col.abstract %}
+      <div class="pw-grid-card-desc">{{ col.abstract }}</div>
+      {% endif %}
+      <div>
+        {% for tag in col.tags %}<span class="pw-badge">{{ tag }}</span>{% endfor %}
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if kb.single_notes %}
+<div class="pw-section-label">Quick Notes</div>
+<div class="pw-card-grid">
+  {% for note in kb.single_notes %}
+  <div class="pw-grid-item">
+    <a class="pw-grid-card" href="quick_notes/{{ note.title }}.html">
+      <div class="pw-grid-card-title">{{ note.title }}</div>
+      <div>
+        {% for tag in note.tags %}<span class="pw-badge-outline pw-badge">{{ tag }}</span>{% endfor %}
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,1 +1,44 @@
-{{collection.title}}
+{# Collection index page — shows collection overview with TOC #}
+{% extends "_base.html" %}
+{% from "_toc_tree.html" import render_toc %}
+
+{% block title %}{{ collection.title }}{% endblock %}
+{% block brand_text %}{{ collection.title }}{% endblock %}
+{% block body_class %}no-right-sidebar{% endblock %}
+
+{% block page_class %}has-hero{% endblock %}
+
+{% block hero %}
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <h1 class="pw-hero-title">{{ collection.title }}</h1>
+    {% if collection.abstract %}
+    <p class="pw-hero-subtitle">{{ collection.abstract }}</p>
+    {% endif %}
+    <ul class="pw-hero-tags">
+      {% for tag in collection.tags %}<li><a href="#" class="pw-hero-tag">{{ tag }}</a></li>{% endfor %}
+    </ul>
+    <div class="pw-hero-search-wrap">
+      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search {{ collection.title }}...">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block sidebar_left %}
+{{ render_toc(collection.contents, ".", 0) }}
+{% endblock %}
+
+{% block content %}
+<div class="pw-card">
+  <h1>{{ collection.title }}</h1>
+  {% if collection.abstract %}
+  <p>{{ collection.abstract }}</p>
+  {% endif %}
+  <div class="pw-meta">
+    {% for tag in collection.tags %}<a href="#" class="pw-badge">{{ tag }}</a>{% endfor %}
+  </div>
+  <h2>Table of Contents</h2>
+  {{ render_toc(collection.contents, ".", 0) }}
+</div>
+{% endblock %}

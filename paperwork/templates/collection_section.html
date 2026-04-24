@@ -1,1 +1,35 @@
-{{section_name}}
+{# Section index within a collection #}
+{% extends "_base.html" %}
+{% from "_toc_tree.html" import render_toc %}
+
+{% block title %}{{ section_name }}{% endblock %}
+{% block brand_text %}{{ section_name }}{% endblock %}
+{% block body_class %}no-right-sidebar{% endblock %}
+
+{% block page_class %}has-hero{% endblock %}
+
+{% block hero %}
+<div class="pw-hero">
+  <div class="pw-hero-inner">
+    <h1 class="pw-hero-title">{{ section_name }}</h1>
+    <p class="pw-hero-subtitle">
+      {% for s in section_prefix %}{{ s }}{% if not loop.last %} &rsaquo; {% endif %}{% endfor %}
+    </p>
+    <div class="pw-hero-search-wrap">
+      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search...">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block sidebar_left %}
+{{ render_toc(toc, ".", 0) }}
+{% endblock %}
+
+{% block content %}
+<div class="pw-card">
+  <h1>{{ section_name }}</h1>
+  <h2>Contents</h2>
+  {{ render_toc(toc, ".", 0) }}
+</div>
+{% endblock %}

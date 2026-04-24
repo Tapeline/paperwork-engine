@@ -1,0 +1,24 @@
+{#
+  Reusable macro: renders a TOC as a collapsible tree.
+  Expects a list of Note | TOCSection items.
+#}
+{% macro render_toc(items, base_path, depth) %}
+<ul class="pw-toc-tree">
+  {% for item in items %}
+    {% if item.__class__.__name__ == 'TOCSection' %}
+    <li class="pw-toc-item{% if depth == 0 %} is-expanded{% endif %}">
+      <button class="pw-toc-toggle" type="button">
+        <span class="pw-toc-arrow"></span>{{ item.title }}
+      </button>
+      <div class="pw-toc-children">
+        {{ render_toc(item.toc, base_path, depth + 1) }}
+      </div>
+    </li>
+    {% else %}
+    <li class="pw-toc-item">
+      <a class="pw-toc-link" href="{{ base_path }}/{{ item.title }}.html">{{ item.title }}</a>
+    </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endmacro %}

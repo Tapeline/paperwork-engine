@@ -1,0 +1,123 @@
+{# Responsive breakpoints — mobile / tablet / desktop #}
+
+/*
+  Breakpoints:
+    - Desktop: > 1200px  — both sidebars visible
+    - Tablet:  769-1200px — only left sidebar visible, right sidebar hidden
+    - Mobile:  <= 768px   — both sidebars hidden, hamburger menu appears
+*/
+
+/* ===== Tablet: hide right sidebar ===== */
+@media screen and (max-width: 1200px) {
+  .pw-sidebar-right {
+    display: none;
+  }
+
+  .pw-sidebar-right.is-open {
+    display: block;
+    z-index: 810;
+  }
+
+  .pw-content-area {
+    margin-right: 0;
+  }
+
+  .pw-hero {
+    margin-right: 0;
+  }
+
+  .pw-footer {
+    margin-right: 0;
+  }
+
+  /* Show the on-page TOC toggle button */
+  .pw-navbar-toc-btn {
+    display: block;
+  }
+}
+
+/* ===== Mobile: hide both sidebars ===== */
+@media screen and (max-width: 768px) {
+  .pw-sidebar-left {
+    display: none;
+  }
+
+  .pw-sidebar-left.is-open {
+    display: block;
+    z-index: 810;
+  }
+
+  .pw-sidebar-right {
+    display: none;
+  }
+
+  .pw-sidebar-right.is-open {
+    display: block;
+    z-index: 810;
+  }
+
+  .pw-content-area {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 24px 16px 60px;
+  }
+
+  .pw-hero {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .pw-footer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Show hamburger buttons */
+  .pw-navbar-menu-btn {
+    display: block;
+  }
+
+  .pw-navbar-toc-btn {
+    display: block;
+  }
+
+  /* Adjust card padding for mobile */
+  .pw-card {
+    padding: 24px 20px;
+  }
+
+  .pw-card h1 {
+    font-size: 26px;
+  }
+
+  .pw-card h2 {
+    font-size: 20px;
+  }
+
+  /* Hero adjustments */
+  .pw-hero-inner {
+    padding: 32px 16px 64px;
+  }
+
+  .pw-hero-title {
+    font-size: 24px;
+  }
+
+  .pw-hero-search {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  /* Navbar brand may be too long on small screens */
+  .pw-navbar-brand {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Card grid goes single-column on mobile */
+  .pw-grid-item {
+    float: none;
+    width: 100%;
+  }
+}
