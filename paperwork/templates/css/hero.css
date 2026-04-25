@@ -17,7 +17,7 @@ body.no-right-sidebar .pw-hero {
 }
 
 .pw-hero-inner {
-  padding: 48px 24px 80px;
+  padding: 48px 24px 24px;
   max-width: {{ content_max_w }};
   margin: 0 auto;
 }
@@ -33,17 +33,16 @@ body.no-right-sidebar .pw-hero {
   font-size: 16px;
   font-weight: 300;
   opacity: 0.85;
-  margin: 0 0 32px;
+  margin: 0 0 16px;
 }
 
-/* ===== Hero search bar — sits across the color boundary ===== */
 .pw-hero-search-wrap {
-  position: relative;
-  max-width: 640px;
-  margin: 0 auto;
-  /* Pull the search bar down so it's half in hero, half in content area */
-  top: 40px;
-  margin-bottom: -20px;
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    /* Pull the search bar down so it's half in hero, half in content area */
+    top: 32px;
+    margin-bottom: -20px;
 }
 
 .pw-hero-search {

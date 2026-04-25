@@ -14,9 +14,9 @@
     <ul class="pw-hero-tags">
       {% for tag in note.tags %}<li><a href="#" class="pw-hero-tag">{{ tag }}</a></li>{% endfor %}
     </ul>
-    <div class="pw-hero-search-wrap">
-      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search notes...">
-    </div>
+<!--    <div class="pw-hero-search-wrap">-->
+<!--      <input class="pw-hero-search" id="pw-hero-search" type="text" placeholder="Search notes...">-->
+<!--    </div>-->
   </div>
 </div>
 {% endblock %}
@@ -27,9 +27,6 @@
 
 {% block content %}
 <div class="pw-card">
-  <div class="pw-meta">
-    {% for tag in note.tags %}<a href="#" class="pw-badge">{{ tag }}</a>{% endfor %}
-  </div>
   <div class="pw-card-content">
     {{ content }}
   </div>

@@ -71,7 +71,7 @@ class Exporter:
     ) -> None:
         rendered = template.render(**context)
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(rendered)
+        path.write_text(rendered, encoding="utf-8")
 
     def _add_heading_ids_and_toc(self, html: str) -> tuple[str, str]:
         """
@@ -212,8 +212,10 @@ class Exporter:
                             self.collection_section_template,
                             {
                                 "section_prefix": prefix,
-                                "section_path": section_path,
                                 "section_name": section.title,
+                                "toc_path": section_path.relative_to(
+                                    self.build_dir
+                                ),
                                 "toc": section.toc,
                                 "kb": kb,
                                 "static_root": static_root,

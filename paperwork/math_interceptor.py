@@ -10,8 +10,8 @@ MATH_FONT_SIZE: Final = 18
 def render_math_inline(self, tokens, idx, options, env) -> str:
     tex_content = tokens[idx].content
     try:
-        svg_xml = ziamath.Latex(tex_content, inline=True, size=MATH_FONT_SIZE).svg()
-        return f'<span class="math-inline" style="display: inline-block; vertical-align: middle;">{svg_xml}</span>'
+        tag = ziamath.Latex(tex_content, inline=True, size=MATH_FONT_SIZE).svg()
+        return '<svg class="math-svg" ' + tag.removeprefix("<svg")
     except Exception as e:
         print(f"Math rendering error on '{tex_content}': {e}")
         return f'<span class="math-error" style="color:red;">${tex_content}$</span>'
