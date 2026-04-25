@@ -9,7 +9,6 @@
   border-left: 4px solid {{ divider }};
   background: #F5F5F5;
   color: {{ text_secondary }};
-  font-style: italic;
 }
 
 .pw-card blockquote p {
@@ -28,7 +27,7 @@
              <div class="callout-content">...</div>
            </div>
    ============================================================ */
-.pw-card .callout {
+blockquote:has(.callout) {
   margin: 0 0 16px;
   border-left: 4px solid {{ adm_info }};
   border-radius: 2px;
@@ -36,74 +35,73 @@
   overflow: hidden;
 }
 
-.pw-card .callout-title {
-  padding: 10px 16px;
+.callout-title {
+  padding: 10px 0;
   font-size: 14px;
   font-weight: 500;
   color: {{ text_primary }};
 }
 
-.pw-card .callout-content {
-  padding: 0 16px 12px;
+.callout-content {
   font-size: 14px;
   line-height: 1.6;
 }
 
-.pw-card .callout-content p {
+.callout-content p {
   margin: 0 0 8px;
 }
 
-.pw-card .callout-content p:last-child {
+.callout-content p:last-child {
   margin-bottom: 0;
 }
 
 /* --- Callout type variants --- */
 /* Note / Info (default) */
-.pw-card .callout[data-callout="note"],
-.pw-card .callout[data-callout="info"] {
+blockquote:has(.callout[data-callout="note"]),
+blockquote:has(.callout[data-callout="info"]) {
   border-left-color: {{ adm_info }};
   background: #E1F5FE;
 }
 
 /* Tip / Success */
-.pw-card .callout[data-callout="tip"],
-.pw-card .callout[data-callout="success"] {
+blockquote:has(.callout[data-callout="tip"]),
+blockquote:has(.callout[data-callout="success"]) {
   border-left-color: {{ adm_tip }};
   background: #E8F5E9;
 }
 
 /* Warning / Caution */
-.pw-card .callout[data-callout="warning"],
-.pw-card .callout[data-callout="caution"] {
+blockquote:has(.callout[data-callout="warning"]),
+blockquote:has(.callout[data-callout="caution"]) {
   border-left-color: {{ adm_warning }};
   background: #FFF3E0;
 }
 
 /* Danger / Error / Bug */
-.pw-card .callout[data-callout="danger"],
-.pw-card .callout[data-callout="error"],
-.pw-card .callout[data-callout="bug"] {
+blockquote:has(.callout[data-callout="danger"]),
+blockquote:has(.callout[data-callout="error"]),
+blockquote:has(.callout[data-callout="bug"]) {
   border-left-color: {{ adm_danger }};
   background: #FFEBEE;
 }
 
 /* Abstract / Summary / TLDR */
-.pw-card .callout[data-callout="abstract"],
-.pw-card .callout[data-callout="summary"],
-.pw-card .callout[data-callout="tldr"] {
+blockquote:has(.callout[data-callout="abstract"]),
+blockquote:has(.callout[data-callout="summary"]),
+blockquote:has(.callout[data-callout="tldr"]) {
   border-left-color: {{ adm_note }};
   background: #E3F2FD;
 }
 
 /* Example */
-.pw-card .callout[data-callout="example"] {
+blockquote:has(.callout[data-callout="example"]) {
   border-left-color: #9C27B0;
   background: #F3E5F5;
 }
 
 /* Quote / Cite */
-.pw-card .callout[data-callout="quote"],
-.pw-card .callout[data-callout="cite"] {
+blockquote:has(.callout[data-callout="quote"]),
+blockquote:has(.callout[data-callout="cite"]) {
   border-left-color: {{ text_hint }};
   background: #F5F5F5;
 }
