@@ -11,7 +11,7 @@
         <span class="pw-toc-arrow"></span>{{ item.title }}
       </button>
       <div class="pw-toc-children">
-        {{ render_toc(item.toc, base_path, depth + 1) }}
+        {{ render_toc(item.toc, base_path + "/" + (item.title|clean_name) , depth + 1) }}
       </div>
     </li>
     {% else %}

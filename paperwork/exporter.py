@@ -202,7 +202,7 @@ class Exporter:
                         _walk(section.toc, [*prefix, section.title])
                         section_path = reduce(
                             lambda a, b: a / b,
-                            map(_clean_name, prefix),
+                            map(_clean_name, [*prefix, section.title]),
                             self._collection_path(collection)
                         )
                         # Section index pages: no per-page TOC needed
@@ -216,6 +216,8 @@ class Exporter:
                                 "toc_path": section_path.relative_to(
                                     self.build_dir
                                 ),
+                                "parent_section_name": prefix[-1] if prefix else "Home",
+                                "parent_toc_path": section_path.parent.relative_to(self.build_dir),
                                 "toc": section.toc,
                                 "kb": kb,
                                 "static_root": static_root,

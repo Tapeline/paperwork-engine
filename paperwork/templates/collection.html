@@ -32,10 +32,6 @@
 
 {% block content %}
 <div class="pw-card" style="margin-top: 16px;">
-  <h1>{{ collection.title }}</h1>
-  {% if collection.abstract %}
-  <p>{{ collection.abstract }}</p>
-  {% endif %}
   <h2>Table of Contents</h2>
   {{ render_toc(collection.contents, ".", 0) }}
 </div>
